@@ -2,8 +2,11 @@
 class ControllerCommonLogin extends Controller { 
 	private $error = array();
 	          
-	public function index() { 
-    	$this->language->load('common/login');
+	public function index() {
+	
+		$this->ajaxlogoutcheck();
+	
+    		$this->language->load('common/login');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -97,6 +100,18 @@ class ControllerCommonLogin extends Controller {
 				
 		$this->response->setOutput($this->render());
   	}
+  	
+  	protected function ajaxlogoutcheck() {
+		
+		$this->language->load('common/login');
+		
+		if ((!$this->user->isLogged()) && isset($this->request->server['HTTP_X_REQUESTED_WITH']) && strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+			$this->response->addHeader('application/json');
+			$json = array();
+			$json['error'] = $this->language->get('error_token');
+			die(json_encode($json['error']));
+		}
+	}
 		
 	protected function validate() {
 		if (!isset($this->request->post['username']) || !isset($this->request->post['password']) || !$this->user->login($this->request->post['username'], $this->request->post['password'])) {
