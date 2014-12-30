@@ -178,11 +178,11 @@ $(document).ready(function() {
 	});
 	
 	// tooltips on hover
-	$('[data-toggle=\'tooltip\']').tooltip({container: 'body', html: true});
+	$('[data-toggle=\'tooltip\']').tooltip({html: true});
 
 	// Makes tooltips work on ajax generated content
 	$(document).ajaxStop(function() {
-		$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
+		$('[data-toggle=\'tooltip\']').tooltip();
 	});	
 });
 
