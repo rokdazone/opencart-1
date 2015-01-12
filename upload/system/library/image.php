@@ -102,6 +102,25 @@ class Image {
 		$this->info['width']  = $width;
 		$this->info['height'] = $height;
 	}
+	
+	// Sharpen image
+	public function imagesharpen() {
+		
+		if (function_exists('imageconvolution')) {
+		
+			$matrix = array(
+				array(-1.2, -1, -1.2), 
+				array(-1, 20, -1), 
+				array(-1.2, -1, -1.2)
+			);
+			
+			$divisor = array_sum(array_map('array_sum', $matrix));
+			$offset = 0; 
+			imageconvolution($this->image, $matrix, $divisor, $offset);
+			
+		}
+		
+	}
 
 	public function watermark($file, $position = 'bottomright') {
 		$watermark = $this->create($file);
