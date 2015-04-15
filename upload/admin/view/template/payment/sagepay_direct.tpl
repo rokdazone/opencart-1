@@ -159,9 +159,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="sagepay-direct-cron-job-token"><span data-toggle="tooltip" title="<?php echo $help_cron_job_token; ?>"><?php echo $entry_cron_job_token; ?></span></label>
             <div class="col-sm-10">
-              <div class="input-group">
-                <input type="text" name="sagepay_direct_cron_job_token" value="<?php echo $sagepay_direct_cron_job_token; ?>" placeholder="<?php echo $entry_cron_job_token; ?>" id="sagepay-direct-cron-job-token" class="form-control" />
-              </div>
+              <input type="text" name="sagepay_direct_cron_job_token" value="<?php echo $sagepay_direct_cron_job_token; ?>" placeholder="<?php echo $entry_cron_job_token; ?>" id="sagepay-direct-cron-job-token" class="form-control" />
             </div>
           </div>
           <div class="form-group">
